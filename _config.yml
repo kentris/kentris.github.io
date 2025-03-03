@@ -8,7 +8,7 @@ middle_name:
 last_name: Kentris
 email: william.n.kentris@gmail.com
 contact_note: >
-  You can even add a little note about which of these is the best way to reach you.
+  Feel free to reach out to me through any of the below socials, although I will respond to email the fastest.
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 footer_text: >
@@ -42,7 +42,7 @@ repo_trophies:
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout

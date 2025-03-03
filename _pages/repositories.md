@@ -3,7 +3,7 @@ layout: page
 permalink: /repositories/
 title: Repositories
 description: Ongoing projects being maintained and actively worked on.
-nav: true
+nav: false
 nav_order: 4
 ---
 
