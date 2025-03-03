@@ -7,7 +7,7 @@ olid: OL27112900M # use Open Library ID to fetch cover (if no `cover` is provide
 isbn: 1491946008 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
 categories: programming
 tags: top-100
-buy_link: https://www.amazon.com/Fluent-Python-Concise-Effective-Programming/dp/1491946008
+buy_link: 
 started: 2019-08-23
 finished: 2020-03-07
 released: 2015
