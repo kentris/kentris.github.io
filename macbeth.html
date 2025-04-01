@@ -2,14 +2,23 @@
 <html>
 <head>
 <style>
+* {
+    box-sizing: border-box
+} 
 .role {font-weight: bold;}
 p {text-indent:50px;}
 .hideable {color: white;}
 #myDiv{
   position: fixed;
-  left: 40px;
+  display: inline-grid;
+  grid-auto-flow: column;
+  background: #ddddff;
+  padding: 10px;
+  width: 100%;
 }
 .scene {font-weight: bold;}
+#myDiv button { margin: 0 4px; width: 33%; height: 50px; display: block;}
+#myDiv select { margin: 0 4px; width: 33%; height: 50px; display: block;}
 
 </style>
 </head>
