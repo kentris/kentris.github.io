@@ -1825,3 +1825,171 @@ footer p {
     transition: none;
   }
 }
+
+/* =========================================
+   RAG Search Demo
+   ========================================= */
+
+.rag-search {
+  margin: 2rem 0 3rem;
+}
+
+
+.search-input-row {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+
+#rag-query {
+  flex: 1;
+  min-width: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+
+#rag-query:focus {
+  border-color: #6ea8fe;
+  box-shadow: 0 0 0 3px rgba(110, 168, 254, 0.15);
+}
+
+
+#rag-query::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+
+#rag-search-button {
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: #6ea8fe;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+
+#rag-search-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+
+#rag-search-button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+
+.rag-status {
+  min-height: 1.5rem;
+  margin: 1rem 0;
+  opacity: 0.75;
+}
+
+
+.rag-results {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+
+.rag-result-card {
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+
+.rag-result-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(110, 168, 254, 0.5);
+}
+
+
+.rag-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+
+.rag-result-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(110, 168, 254, 0.15);
+  color: #6ea8fe;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+
+.rag-result-score {
+  font-size: 0.85rem;
+  color: #6ea8fe;
+  font-weight: 600;
+}
+
+
+.rag-result-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+
+.rag-result-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+
+
+.rag-result-link {
+  color: #6ea8fe;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+
+.rag-result-link:hover {
+  text-decoration: underline;
+}
+
+
+@media (max-width: 600px) {
+
+  .search-input-row {
+    flex-direction: column;
+  }
+
+  #rag-search-button {
+    width: 100%;
+  }
+
+  .rag-result-header {
+    align-items: flex-start;
+  }
+
+}

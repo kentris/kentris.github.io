@@ -134,7 +134,46 @@
 
     </p>
 
+    <h2>Live Retrieval Demo</h2>
 
+<p>
+  Enter a research topic or question to search the indexed ArXiv papers.
+  The retrieval system will return the most relevant papers based on
+  TF-IDF cosine similarity.
+</p>
+
+<div class="rag-search">
+
+  <form id="rag-search-form">
+
+    <div class="search-input-row">
+
+      <input
+        type="text"
+        id="rag-query"
+        name="query"
+        placeholder="e.g. transformer models for image classification"
+        autocomplete="off"
+        required
+      />
+
+      <button type="submit" id="rag-search-button">
+        Search
+      </button>
+
+    </div>
+
+  </form>
+
+  <p id="rag-status" class="rag-status" aria-live="polite"></p>
+
+  <div
+    id="rag-results"
+    class="rag-results"
+    aria-live="polite"
+  ></div>
+
+</div>
     <h2>What I Learned</h2>
 
     <p>
@@ -152,15 +191,6 @@
     <div class="project-links">
 
       <a
-        href="https://your-demo-url.com"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Live Demo
-      </a>
-
-
-      <a
         href="https://github.com/kentris/arxiv-search-rag"
         target="_blank"
         rel="noopener noreferrer"
@@ -176,6 +206,165 @@
 
   <script src="../components.js"></script>
   <script src="../background.js"></script>
+<script>
+  const searchForm = document.getElementById("rag-search-form");
+  const queryInput = document.getElementById("rag-query");
+  const searchButton = document.getElementById("rag-search-button");
+  const statusElement = document.getElementById("rag-status");
+  const resultsContainer = document.getElementById("rag-results");
+
+  const API_URL = "https://kentris-github-io-backend-1.onrender.com/api/search";
+
+
+  searchForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    const query = queryInput.value.trim();
+
+    if (!query) {
+      return;
+    }
+
+    // Reset UI
+    resultsContainer.innerHTML = "";
+    statusElement.textContent = "Searching...";
+    searchButton.disabled = true;
+    searchButton.textContent = "Searching...";
+
+    try {
+
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          query: query
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      displayResults(data.results);
+
+    } catch (error) {
+
+      console.error("RAG search error:", error);
+
+      statusElement.textContent =
+        "Unable to connect to the search service. Please try again.";
+
+    } finally {
+
+      searchButton.disabled = false;
+      searchButton.textContent = "Search";
+
+    }
+
+  });
+
+
+  function displayResults(results) {
+
+    resultsContainer.innerHTML = "";
+
+    if (!results || results.length === 0) {
+
+      statusElement.textContent =
+        "No relevant papers were found.";
+
+      return;
+    }
+
+    statusElement.textContent =
+      `Found ${results.length} relevant paper${results.length === 1 ? "" : "s"}.`;
+
+
+    results.forEach((result, index) => {
+
+      const card = document.createElement("article");
+      card.className = "rag-result-card";
+
+
+      const score = (result.score * 100).toFixed(1);
+
+
+      card.innerHTML = `
+        <div class="rag-result-header">
+
+          <span class="rag-result-number">
+            ${index + 1}
+          </span>
+
+          <span class="rag-result-score">
+            ${score}% relevance
+          </span>
+
+        </div>
+
+
+        <h3 class="rag-result-title">
+          ${escapeHtml(result.title)}
+        </h3>
+
+
+        <div class="rag-result-info">
+
+          <span>
+            Section ${escapeHtml(String(result.section_number))}
+          </span>
+
+          <span>
+            Similarity: ${result.score}
+          </span>
+
+        </div>
+
+
+        <a
+          href="${escapeAttribute(result.url)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rag-result-link"
+        >
+          View Paper on ArXiv →
+        </a>
+      `;
+
+
+      resultsContainer.appendChild(card);
+
+    });
+
+  }
+
+
+  function escapeHtml(value) {
+
+    const div = document.createElement("div");
+    div.textContent = value;
+    return div.innerHTML;
+
+  }
+
+
+  function escapeAttribute(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+  }
+</script>
+
 </body>
 
 </html>
