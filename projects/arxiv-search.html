@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>ArXiv Paper Search Engine - Kentris</title>
+
+  <!-- Go up one level for CSS -->
+  <link rel="stylesheet" href="../style.css" />
+
+</head>
+
+<body class="site-theme">
+  <canvas id="data-canvas" aria-hidden="true"></canvas>
+
+  <div id="header"></div>
+
+  <main>
+
+    <p class="back-link">
+      <a href="../projects.html">
+        ← Back to Projects
+      </a>
+    </p>
+
+
+    <h1>ArXiv Paper RAG Search Engine</h1>
+
+
+    <p class="project-intro">
+
+      A search engine designed to help users
+      discover relevant AI and machine learning research papers.
+
+    </p>
+
+
+    <h2>Project Overview</h2>
+
+    <p>
+
+      The project focuses on the retrieval component of a
+      Retrieval-Augmented Generation (RAG) system, designed to
+      return documents relevant to a user’s query. Built in
+      Python using Flask, the retrieval API is hosted on Render
+      and can be queried by external systems through a public
+      endpoint. The document text was preprocessed and divided
+      into chunks, with TF-IDF vectors generated to represent the
+      text and enable similarity-based retrieval. The resulting
+      document chunks and vector data are stored in SQLite,
+      allowing the Flask endpoint to process incoming queries,
+      identify relevant document chunks, and return them to
+      downstream RAG components for further generation.
+
+    </p>
+
+
+    <h2>Architecture</h2>
+
+
+    <img
+      src="../images/arxiv-search-architecture.png"
+      alt="ArXiv Search Engine Architecture"
+      class="project-detail-image"
+    />
+
+
+    <p>
+
+      The system consists of a data ingestion pipeline, document
+      processing and indexing layer, search backend, and web
+      interface. The Generator is not included in this demo, but
+      it would be provided the returned chunks from the database
+      to augment its ability to generate accurate answers.
+
+    </p>
+
+
+    <h2>Key Features</h2>
+
+    <ul>
+
+      <li>
+        Vector-based semantic search
+      </li>
+
+      <li>
+        TF-IDF indexing and ranking
+      </li>
+
+      <li>
+        Real-time search API
+      </li>
+
+      <li>
+        Python/Flask backend
+      </li>
+
+      <li>
+        SQLite data storage
+      </li>
+
+    </ul>
+
+
+    <h2>Technologies</h2>
+
+    <div class="project-tags">
+
+      <span>Python</span>
+      <span>Flask</span>
+      <span>SQLite</span>
+      <span>Vector Search</span>
+      <span>TF-IDF</span>
+      <span>REST API</span>
+
+    </div>
+
+
+    <h2>Results</h2>
+
+    <p>
+
+      Describe your measured results here. This could include
+      search latency, number of indexed papers, ranking metrics,
+      throughput, or other meaningful measurements.
+
+    </p>
+
+
+    <h2>What I Learned</h2>
+
+    <p>
+      I learned that effective RAG systems can be built using
+      low-overhead technologies that are well suited for
+      environments with limited computing resources. Using
+      TF-IDF to create vector representations of text eliminated
+      the need for a resource-intensive embedding LLM, while
+      SQLite provided a lightweight database solution without
+      requiring a separate, continuously running SQL server such
+      as PostgreSQL.
+    </p>
+
+
+    <div class="project-links">
+
+      <a
+        href="https://your-demo-url.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Live Demo
+      </a>
+
+
+      <a
+        href="https://github.com/kentris/arxiv-search-rag"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+
+    </div>
+
+  </main>
+
+  <div id="footer"></div>
+
+  <script src="../components.js"></script>
+  <script src="../background.js"></script>
+</body>
+
+</html>
