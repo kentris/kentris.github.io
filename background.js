@@ -7,9 +7,7 @@
 
   if (!ctx) return;
 
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  );
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   let width = 0;
   let height = 0;
@@ -26,7 +24,7 @@
     mouseRadius: 180,
     speed: 0.35,
     pulseInterval: 450,
-    maxPulses: 18
+    maxPulses: 18,
   };
 
   let lastPulseTime = 0;
@@ -62,16 +60,9 @@
     draw() {
       ctx.beginPath();
 
-      ctx.arc(
-        this.x,
-        this.y,
-        this.radius,
-        0,
-        Math.PI * 2
-      );
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
 
-      ctx.fillStyle =
-        `rgba(81, 190, 255, ${this.opacity})`;
+      ctx.fillStyle = `rgba(81, 190, 255, ${this.opacity})`;
 
       ctx.fill();
     }
@@ -95,16 +86,11 @@
     draw() {
       const t = this.progress;
 
-      const x =
-        this.start.x + (this.end.x - this.start.x) * t;
+      const x = this.start.x + (this.end.x - this.start.x) * t;
 
-      const y =
-        this.start.y + (this.end.y - this.start.y) * t;
+      const y = this.start.y + (this.end.y - this.start.y) * t;
 
-      const glow = ctx.createRadialGradient(
-        x, y, 0,
-        x, y, 9
-      );
+      const glow = ctx.createRadialGradient(x, y, 0, x, y, 9);
 
       glow.addColorStop(0, "rgba(110, 225, 255, 0.95)");
       glow.addColorStop(0.35, "rgba(55, 170, 255, 0.35)");
@@ -133,16 +119,10 @@
 
     const count = Math.min(
       settings.maxParticles,
-      Math.max(
-        25,
-        Math.floor(width * height * settings.particleDensity)
-      )
+      Math.max(25, Math.floor(width * height * settings.particleDensity)),
     );
 
-    particles = Array.from(
-      { length: count },
-      () => new Particle()
-    );
+    particles = Array.from({ length: count }, () => new Particle());
 
     pulses = [];
   }
@@ -183,15 +163,13 @@
 
         if (distance > settings.connectionDistance) continue;
 
-        const alpha =
-          (1 - distance / settings.connectionDistance) * 0.22;
+        const alpha = (1 - distance / settings.connectionDistance) * 0.22;
 
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
 
-        ctx.strokeStyle =
-          `rgba(70, 160, 240, ${alpha})`;
+        ctx.strokeStyle = `rgba(70, 160, 240, ${alpha})`;
 
         ctx.lineWidth = 0.8;
         ctx.stroke();
@@ -209,9 +187,7 @@
       availableEdges.length > 0
     ) {
       const edge =
-        availableEdges[
-          Math.floor(Math.random() * availableEdges.length)
-        ];
+        availableEdges[Math.floor(Math.random() * availableEdges.length)];
 
       pulses.push(new Pulse(edge[0], edge[1]));
       lastPulseTime = timestamp;
@@ -227,15 +203,13 @@
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < settings.mouseRadius) {
-        const alpha =
-          (1 - distance / settings.mouseRadius) * 0.25;
+        const alpha = (1 - distance / settings.mouseRadius) * 0.25;
 
         ctx.beginPath();
         ctx.moveTo(mouse.x, mouse.y);
         ctx.lineTo(particle.x, particle.y);
 
-        ctx.strokeStyle =
-          `rgba(100, 200, 255, ${alpha})`;
+        ctx.strokeStyle = `rgba(100, 200, 255, ${alpha})`;
 
         ctx.lineWidth = 1;
         ctx.stroke();
@@ -244,7 +218,7 @@
   }
 
   function drawPulses() {
-    pulses = pulses.filter(pulse => {
+    pulses = pulses.filter((pulse) => {
       const alive = pulse.update();
 
       if (alive) pulse.draw();
@@ -288,11 +262,7 @@
   }
 
   function startAnimation() {
-    if (
-      reducedMotion.matches ||
-      document.hidden ||
-      animationId !== null
-    ) {
+    if (reducedMotion.matches || document.hidden || animationId !== null) {
       return;
     }
 
@@ -320,12 +290,12 @@
 
   window.addEventListener("resize", resizeCanvas);
 
-  window.addEventListener("mousemove", event => {
+  window.addEventListener("mousemove", (event) => {
     mouse.x = event.clientX;
     mouse.y = event.clientY;
   });
 
-  window.addEventListener("mouseout", event => {
+  window.addEventListener("mouseout", (event) => {
     if (!event.relatedTarget) {
       mouse.x = -1000;
       mouse.y = -1000;

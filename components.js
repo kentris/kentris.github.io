@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
   /*
    * Find the script that loaded this file.
    *
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
    */
 
   const componentScript = document.querySelector(
-    'script[src*="components.js"]'
+    'script[src*="components.js"]',
   );
 
   if (!componentScript) {
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const scriptUrl = new URL(
     componentScript.getAttribute("src"),
-    window.location.href
+    window.location.href,
   );
 
   /*
@@ -42,17 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   const headerContainer = document.getElementById("header");
   if (headerContainer) {
-    const headerUrl = new URL(
-      "header.html",
-      siteRoot
-    );
+    const headerUrl = new URL("header.html", siteRoot);
     fetch(headerUrl)
       .then(function (response) {
         if (!response.ok) {
-          throw new Error(
-            "Could not load header.html: " +
-            response.status
-          );
+          throw new Error("Could not load header.html: " + response.status);
         }
         return response.text();
       })
@@ -62,10 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setActiveNavigation();
       })
       .catch(function (error) {
-        console.error(
-          "Error loading header:",
-          error
-        );
+        console.error("Error loading header:", error);
       });
   }
 
@@ -76,17 +66,11 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   const footerContainer = document.getElementById("footer");
   if (footerContainer) {
-    const footerUrl = new URL(
-      "footer.html",
-      siteRoot
-    );
+    const footerUrl = new URL("footer.html", siteRoot);
     fetch(footerUrl)
       .then(function (response) {
         if (!response.ok) {
-          throw new Error(
-            "Could not load footer.html: " +
-            response.status
-          );
+          throw new Error("Could not load footer.html: " + response.status);
         }
         return response.text();
       })
@@ -94,10 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
         footerContainer.innerHTML = html;
       })
       .catch(function (error) {
-        console.error(
-          "Error loading footer:",
-          error
-        );
+        console.error("Error loading footer:", error);
       });
   }
 
@@ -124,30 +105,22 @@ document.addEventListener("DOMContentLoaded", function () {
    * /projects/index.html
    */
   function fixNavigationLinks() {
-    const navigationLinks =
-      document.querySelectorAll("header nav a");
+    const navigationLinks = document.querySelectorAll("header nav a");
     navigationLinks.forEach(function (link) {
       const href = link.getAttribute("href");
       if (!href) {
         return;
       }
-      const absoluteUrl = new URL(
-        href,
-        siteRoot
-      );
+      const absoluteUrl = new URL(href, siteRoot);
       link.href = absoluteUrl.href;
     });
 
     /*
      * Fix the site title separately.
      */
-    const siteTitle =
-      document.querySelector(".site-title");
+    const siteTitle = document.querySelector(".site-title");
     if (siteTitle) {
-      siteTitle.href = new URL(
-        "index.html",
-        siteRoot
-      ).href;
+      siteTitle.href = new URL("index.html", siteRoot).href;
     }
   }
 
@@ -157,44 +130,26 @@ document.addEventListener("DOMContentLoaded", function () {
    * ----------------------------------------
    */
   function setActiveNavigation() {
-    const pathname =
-      window.location.pathname;
-    const currentFile =
-      pathname.split("/").pop();
+    const pathname = window.location.pathname;
+    const currentFile = pathname.split("/").pop();
 
     let currentPage = null;
 
-    if (
-      currentFile === "" ||
-      currentFile === "index.html"
-    ) {
+    if (currentFile === "" || currentFile === "index.html") {
       currentPage = "home";
-    }
-    else if (
-      currentFile === "projects.html"
-    ) {
+    } else if (currentFile === "projects.html") {
       currentPage = "projects";
-    }
-    else if (
-      currentFile === "cv.html"
-    ) {
+    } else if (currentFile === "cv.html") {
       currentPage = "cv";
-    }
-    else if (
-      currentFile === "contact.html"
-    ) {
+    } else if (currentFile === "contact.html") {
       currentPage = "contact";
-    }
-    else if (
-      pathname.includes("/projects/")
-    ) {
+    } else if (pathname.includes("/projects/")) {
       currentPage = "projects";
     }
     if (currentPage) {
-      const activeLink =
-        document.querySelector(
-          `nav a[data-page="${currentPage}"]`
-        );
+      const activeLink = document.querySelector(
+        `nav a[data-page="${currentPage}"]`,
+      );
       if (activeLink) {
         activeLink.classList.add("active");
       }

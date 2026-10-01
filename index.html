@@ -1,109 +1,97 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#08111f" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08111f" />
 
-  <title>Home - Kentris</title>
+    <title>Home - Kentris</title>
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body class="home-page">
+  <body class="home-page">
+    <!-- Animated background -->
+    <canvas id="data-canvas" aria-hidden="true"></canvas>
 
-  <!-- Animated background -->
-  <canvas id="data-canvas" aria-hidden="true"></canvas>
+    <!-- Shared header -->
+    <div id="header"></div>
 
-  <!-- Shared header -->
-  <div id="header"></div>
+    <main class="home-main">
+      <section class="hero">
+        <div class="hero-content">
+          <p class="hero-label">
+            <span class="status-dot"></span>
+            AI / ML ENGINEERING
+          </p>
 
-  <main class="home-main">
+          <h1>
+            Building intelligent systems
+            <span class="gradient-text">that turn data into insight.</span>
+          </h1>
 
-    <section class="hero">
+          <p class="hero-description">
+            I'm an AI/ML developer focused on information retrieval, natural
+            language processing, large language models, and high-performance
+            search architectures.
+          </p>
 
-      <div class="hero-content">
+          <div class="hero-actions">
+            <a href="projects.html" class="hero-button primary-button">
+              Explore My Projects
+              <span aria-hidden="true">→</span>
+            </a>
 
-        <p class="hero-label">
-          <span class="status-dot"></span>
-          AI / ML ENGINEERING
-        </p>
-
-        <h1>
-          Building intelligent systems
-          <span class="gradient-text">that turn data into insight.</span>
-        </h1>
-
-        <p class="hero-description">
-          I'm an AI/ML developer focused on information retrieval,
-          natural language processing, large language models, and
-          high-performance search architectures.
-        </p>
-
-        <div class="hero-actions">
-          <a href="projects.html" class="hero-button primary-button">
-            Explore My Projects
-            <span aria-hidden="true">→</span>
-          </a>
-
-          <a href="contact.html" class="hero-button secondary-button">
-            Get In Touch
-          </a>
+            <a href="contact.html" class="hero-button secondary-button">
+              Get In Touch
+            </a>
+          </div>
         </div>
 
-      </div>
+        <div class="hero-scroll">
+          <span></span>
+          Explore
+        </div>
+      </section>
 
-      <div class="hero-scroll">
-        <span></span>
-        Explore
-      </div>
+      <section class="home-focus">
+        <h2>Areas of Focus</h2>
 
-    </section>
+        <div class="focus-grid">
+          <article class="focus-card">
+            <div class="focus-icon">⌘</div>
+            <h3>Information Retrieval</h3>
+            <p>
+              Vector search, semantic retrieval, ranking systems, and scalable
+              search architectures.
+            </p>
+          </article>
 
-    <section class="home-focus">
+          <article class="focus-card">
+            <div class="focus-icon">◈</div>
+            <h3>Large Language Models</h3>
+            <p>
+              RAG pipelines, intelligent agents, prompt engineering, and
+              LLM-powered applications.
+            </p>
+          </article>
 
-      <h2>Areas of Focus</h2>
+          <article class="focus-card">
+            <div class="focus-icon">⟡</div>
+            <h3>Backend Engineering</h3>
+            <p>
+              Python, APIs, data pipelines, databases, and production-oriented
+              AI systems.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
 
-      <div class="focus-grid">
+    <!-- Shared footer -->
+    <div id="footer"></div>
 
-        <article class="focus-card">
-          <div class="focus-icon">⌘</div>
-          <h3>Information Retrieval</h3>
-          <p>
-            Vector search, semantic retrieval, ranking systems,
-            and scalable search architectures.
-          </p>
-        </article>
-
-        <article class="focus-card">
-          <div class="focus-icon">◈</div>
-          <h3>Large Language Models</h3>
-          <p>
-            RAG pipelines, intelligent agents, prompt engineering,
-            and LLM-powered applications.
-          </p>
-        </article>
-
-        <article class="focus-card">
-          <div class="focus-icon">⟡</div>
-          <h3>Backend Engineering</h3>
-          <p>
-            Python, APIs, data pipelines, databases,
-            and production-oriented AI systems.
-          </p>
-        </article>
-
-      </div>
-
-    </section>
-
-  </main>
-
-  <!-- Shared footer -->
-  <div id="footer"></div>
-
-  <script src="components.js"></script>
-  <script src="background.js"></script>
-
-</body>
+    <script src="components.js"></script>
+    <script src="background.js"></script>
+  </body>
 </html>
