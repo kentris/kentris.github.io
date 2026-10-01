@@ -1,86 +1,86 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Projects - Kentris</title>
+    <title>Projects - Kentris</title>
 
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body class="site-theme">
-<!-- Animated background -->
-<canvas id="data-canvas" aria-hidden="true"></canvas>
+  <body class="site-theme">
+    <!-- Animated background -->
+    <canvas id="data-canvas" aria-hidden="true"></canvas>
 
-<div id="header"></div>
+    <div id="header"></div>
 
-<main class="projects-main">
-  <h1>Projects</h1>
+    <main class="projects-main">
+      <h1>Projects</h1>
 
-  <p>A selection of my AI/ML, search, and software engineering projects.</p>
+      <p>A selection of my AI/ML, search, and software engineering projects.</p>
 
-  <div class="project-grid">
-    <!-- ================================= -->
-    <!-- ArXiv RAG Search Engine -->
-    <!-- ================================= -->
-    <a href="projects/arxiv-search.html" class="project-card">
-      <div class="project-image">
-        <img
-          src="images/arxiv-search.png"
-          alt="ArXiv Paper RAG Search Engine"
-        />
+      <div class="project-grid">
+        <!-- ================================= -->
+        <!-- ArXiv RAG Search Engine -->
+        <!-- ================================= -->
+        <a href="projects/arxiv-search.html" class="project-card">
+          <div class="project-image">
+            <img
+              src="images/arxiv-search.png"
+              alt="ArXiv Paper RAG Search Engine"
+            />
+          </div>
+
+          <div class="project-card-content">
+            <h2>ArXiv Paper RAG Search Engine</h2>
+            <p>
+              A high-performance search engine for discovering AI and machine
+              learning research papers using vector search and information
+              retrieval techniques.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Flask</span>
+              <span>Embeddings</span>
+              <span>Vector Search</span>
+              <span>TF-IDF</span>
+            </div>
+            <span class="view-project"> View Project → </span>
+          </div>
+        </a>
+
+        <!-- ================================= -->
+        <!-- Sentence Classification - Machine Learning Project -->
+        <!-- ================================= -->
+        <a href="projects/sentence-classification.html" class="project-card">
+          <div class="project-image">
+            <img
+              src="images/sentence-classification.png"
+              alt="Sentence Classification"
+            />
+          </div>
+          <div class="project-card-content">
+            <h2>Sentence Classification</h2>
+            <p>
+              A machine learning project demonstrating data preprocessing,
+              feature engineering, model training, and evaluation.
+            </p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>Scikit-learn</span>
+              <span>Pandas</span>
+            </div>
+
+            <span class="view-project"> View Project → </span>
+          </div>
+        </a>
       </div>
+    </main>
 
-      <div class="project-card-content">
-        <h2>ArXiv Paper RAG Search Engine</h2>
-        <p>
-          A high-performance search engine for discovering AI and machine
-          learning research papers using vector search and information
-          retrieval techniques.
-        </p>
-        <div class="project-tags">
-          <span>Python</span>
-          <span>Flask</span>
-          <span>Embeddings</span>
-          <span>Vector Search</span>
-          <span>TF-IDF</span>
-        </div>
-        <span class="view-project"> View Project → </span>
-      </div>
-    </a>
-
-    <!-- ================================= -->
-    <!-- Sentence Classification - Machine Learning Project -->
-    <!-- ================================= -->
-    <a href="projects/sentence-classification.html" class="project-card">
-      <div class="project-image">
-        <img
-          src="images/sentence-classification.png"
-          alt="Sentence Classification"
-        />
-      </div>
-      <div class="project-card-content">
-        <h2>Sentence Classification</h2>
-        <p>
-          A machine learning project demonstrating data preprocessing,
-          feature engineering, model training, and evaluation.
-        </p>
-        <div class="project-tags">
-          <span>Python</span>
-          <span>Scikit-learn</span>
-          <span>Pandas</span>
-        </div>
-
-        <span class="view-project"> View Project → </span>
-      </div>
-    </a>
-  </div>
-</main>
-
-<div id="footer"></div>
-<script src="components.js"></script>
-<script src="background.js"></script>
-</body>
+    <div id="footer"></div>
+    <script src="components.js"></script>
+    <script src="background.js"></script>
+  </body>
 </html>
