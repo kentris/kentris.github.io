@@ -2043,3 +2043,61 @@ footer p {
     font-size: 1rem;
   }
 }
+
+.results-table-container {
+  width: 100%;
+  margin: 2rem 0;
+  overflow-x: auto;
+}
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.results-table caption {
+  margin-bottom: 0.75rem;
+  color: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: left;
+  opacity: 0.7;
+}
+
+.results-table th,
+.results-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: left;
+}
+
+.results-table th {
+  background: rgba(255, 255, 255, 0.06);
+  color: #6ea8fe;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.results-table td:last-child {
+  text-align: right;
+}
+
+.results-table tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tbody tr:hover {
+  background: rgba(110, 168, 254, 0.05);
+}
+
+@media (max-width: 600px) {
+  .results-table th,
+  .results-table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
